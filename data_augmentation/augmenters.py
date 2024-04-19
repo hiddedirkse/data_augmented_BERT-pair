@@ -7,7 +7,7 @@ from categories import categories_methods
 import shutil
 from transformers import MarianMTModel, MarianTokenizer
 
-
+#Implement KA 
 def keyboard_augmentation(xml_data, augmented_csv_file, low_freq_min, low_freq_max, k):
     df = categories_methods.create_df(xml_data)
     cat_freq = categories_methods.get_category_frequencies(df)
@@ -34,7 +34,7 @@ def keyboard_augmentation(xml_data, augmented_csv_file, low_freq_min, low_freq_m
                 data = f"{new_sentence_id}\t{polarity}\t{category}\t{new_sentence_text[0]}\n"
                 add_data_to_csv(augmented_csv_file, data)
 
-
+#Implement BT 
 def backtranslation(xml_data, augmented_csv_file, low_freq_min, low_freq_max, k):
     df = categories_methods.create_df(xml_data)
     cat_freq = categories_methods.get_category_frequencies(df)
@@ -59,7 +59,7 @@ def backtranslation(xml_data, augmented_csv_file, low_freq_min, low_freq_max, k)
                 data = f"{new_sentence_id}\t{polarity}\t{category}\t{sentence_text}\n"
                 add_data_to_csv(augmented_csv_file, data)
 
-
+#Implement EDA 
 def easy_data_augmentation(xml_data, augmented_csv_file, low_freq_min, low_freq_max, k):
     df = categories_methods.create_df(xml_data)
     cat_freq = categories_methods.get_category_frequencies(df)
@@ -103,7 +103,7 @@ def easy_data_augmentation(xml_data, augmented_csv_file, low_freq_min, low_freq_
                 data = f"{new_sentence_id}\t{polarity}\t{category}\t{new_sentence_text[0]}\n"
                 add_data_to_csv(augmented_csv_file, data)
 
-
+#Translate text using MarianMT model
 def translate_text(text, model_name):
     tokenizer = MarianTokenizer.from_pretrained(model_name)
     model = MarianMTModel.from_pretrained(model_name)
@@ -112,7 +112,7 @@ def translate_text(text, model_name):
 
     return translated_text[0]
 
-
+#Add the newly created pairs to the data file
 def add_data_to_csv(csv_file, data):
     with open(csv_file, 'a', newline='') as csvfile:
         csvfile.write("".join(data))
