@@ -1,6 +1,6 @@
 from transformers import MarianMTModel, MarianTokenizer
 
-
+#In this file you can test back translation
 def translate_text(text, model_name):
     tokenizer = MarianTokenizer.from_pretrained(model_name)
     model = MarianMTModel.from_pretrained(model_name)
