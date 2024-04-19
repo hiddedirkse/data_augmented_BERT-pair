@@ -1,4 +1,4 @@
-# data_augmented_BERT-pair
+# Instructions for augmenting BERT-pair
 Here you can find the code for BERT-pair with data augmentation. Keyboard augmentation, back translation and easy data augmentation.
 
 Data Augmentation for a BERT-pair model. In order to use the code please follow the following steps:
