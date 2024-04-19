@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import openpyxl
 import pandas as pd
 
-
+#Create dataframe from XML file
 def create_df(data_xml):
     tree = ET.parse(data_xml)
     root = tree.getroot()
@@ -28,7 +28,7 @@ def create_df(data_xml):
 
     return df
 
-
+#Turn dataframe back into XML file
 def create_xml(df):
     root = ET.Element("Reviews")
 
@@ -50,7 +50,7 @@ def create_xml(df):
 
     return ET.tostring(root, encoding='unicode')
 
-
+#Get the frequencies for aspects in data set
 def get_category_frequencies(df):
     category_frequencies = df['Category'].value_counts()
     category_freq_df = pd.DataFrame(category_frequencies.reset_index())
@@ -58,7 +58,7 @@ def get_category_frequencies(df):
 
     return category_freq_df
 
-
+#Get the low frequency aspects in data set
 def get_low_frequencies(category_freq_df, range_min, range_max):
     low_freq_categories = category_freq_df[
         (category_freq_df['Frequency'] >= range_min) & (category_freq_df['Frequency'] <= range_max)]
